@@ -11,6 +11,7 @@ from jdk5, jdk import java.lang.instrument, we can modify class file throw runni
 
 
 >demo1:
+
 使用静态instrumentation， 在jvm启动时添加一个代理(javaagent)，每个代理是一个jar包，代理类包含一个premain方法，premain方法可以对加载前的class文件进行修改，无需对原有应用做任何修改，就可以实现类的动态修改和增强
 ```
 instrumentation.addTransformer()
@@ -19,6 +20,7 @@ java -javaagent:agent.jar MyClass
 ```
 
 >demo2:
+
 使用动态instrumentation，在jvm启动后通过Attach API远程加载和使用，实现对class文件的修改
 1. 编写Attach Agent(打包成agent.jar)(如方法一)
     ```
@@ -40,4 +42,5 @@ java -javaagent:agent.jar MyClass
     ```
 
 >demo3
+
 使用javaagent破解Censum
