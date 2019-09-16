@@ -28,17 +28,12 @@
     <dependency>
       <groupId>org.ow2.asm</groupId>
       <artifactId>asm</artifactId>
-      <version>6.2.1</version>
+      <version>7.1</version>
     </dependency>
     <dependency>
       <groupId>org.ow2.asm</groupId>
       <artifactId>asm-commons</artifactId>
-      <version>6.2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.5</version>
+      <version>7.1</version>
     </dependency>
   </dependencies>
 
@@ -48,12 +43,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
         <configuration>
           <archive>
             <manifestEntries>
-              <Agent-Class>com.hhu.AgentMain</Agent-Class>
-              <Premain-Class>com.hhu.AgentMain</Premain-Class>
+              <Agent-Class>com.hhu.demo1.AgentMain</Agent-Class>
+              <Premain-Class>com.hhu.demo1.AgentMain</Premain-Class>
               <Can-Redefine-Classes>true</Can-Redefine-Classes>
               <Can-Retransform-Classes>true</Can-Retransform-Classes>
             </manifestEntries>
@@ -74,46 +68,24 @@
               <relocations>
                 <relocation>
                   <pattern>org.ow2.asm</pattern>
-                  <shadedPattern>com.hhu.hidden.org.ow2.asm</shadedPattern>
+                  <shadedPattern>com.hhu.org.ow2.asm</shadedPattern>
                 </relocation>
                 <relocation>
                   <pattern>org.objectweb.asm</pattern>
-                  <shadedPattern>com.hhu.hidden.org.objectweb.asm</shadedPattern>
+                  <shadedPattern>com.hhu.org.objectweb.asm</shadedPattern>
                 </relocation>
               </relocations>
             </configuration>
           </execution>
         </executions>
       </plugin>
-      <!--<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.1</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <relocations>
-                <relocation>
-                  <pattern>org.ow2.asm</pattern>
-                  <shadedPattern>javaagent.hidden.org.ow2.asm</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>org.objectweb.asm</pattern>
-                  <shadedPattern>javaagent.hidden.org.objectweb.asm</shadedPattern>
-                </relocation>
-              </relocations>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>
