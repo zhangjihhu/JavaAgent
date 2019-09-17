@@ -11,12 +11,13 @@ import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
 import java.lang.instrument.UnmodifiableClassException;
 import java.security.ProtectionDomain;
+import java.util.concurrent.TimeUnit;
 
 import static org.objectweb.asm.Opcodes.ASM7;
 
 public class AgentMain {
 
-	public static void agentmain(String agentArgs, Instrumentation instrumentation) throws UnmodifiableClassException {
+	public static void agentmain(String agentArgs, Instrumentation instrumentation) throws UnmodifiableClassException, InterruptedException {
 		System.out.println("agentmain called");
 		instrumentation.addTransformer(new MyClassFileTransformer(), true);
 		Class[] classes = instrumentation.getAllLoadedClasses();
@@ -54,7 +55,6 @@ public class AgentMain {
 			if ("foo".equals(name)) {
 				return new MyMethodVisitor(ASM7, mv, access, name, descriptor);
 			}
-
 			return mv;
 		}
 	}

@@ -46,8 +46,8 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <Agent-Class>com.hhu.demo1.AgentMain</Agent-Class>
-              <Premain-Class>com.hhu.demo1.AgentMain</Premain-Class>
+              <Agent-Class>com.hhu.demo4.Agent</Agent-Class>
+              <Premain-Class>com.hhu.demo4.Agent</Premain-Class>
               <Can-Redefine-Classes>true</Can-Redefine-Classes>
               <Can-Retransform-Classes>true</Can-Retransform-Classes>
             </manifestEntries>
